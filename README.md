@@ -89,3 +89,6 @@ You can provide your own proving.key by running Zokrates locally. **You also nee
   ```
   const res = await fetch("https://your-public.site/proving.key");
   ```
+
+
+create a voting dashboard that has cards for each election that has taken place. Show detials like the number of votes, the winner, and the date of the election. Also, add a navbar which has a button that opens up a modal to check for eligibity by entering the ethereum address and the election id.
