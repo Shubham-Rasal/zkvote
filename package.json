@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "contract:build": "npx hardhat compile",
-    "contract:deploy": "npx hardhat run scripts/deploy.ts"
+    "contract:deploy": "npx hardhat run scripts/deploy.ts --network localhost"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
