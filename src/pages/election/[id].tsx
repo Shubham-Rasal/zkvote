@@ -26,6 +26,9 @@ interface HomeProps {
 
 function ElectionPage({ proveKeyString, programString }: HomeProps) {
   const router = useRouter();
+  const { id } = router.query;
+
+
   const [provider, setProvider] =
     useState<ethers.providers.JsonRpcProvider | null>(null);
   const [voteResult, setVoteResult] = useState<{ even: number; odd: number }>({
@@ -35,6 +38,7 @@ function ElectionPage({ proveKeyString, programString }: HomeProps) {
   const [amount, setAmount] = useState<string | null>(null);
   const [txUrl, setTxUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [voted, setVoted] = useState<boolean>(false);
   const zk = useZokrates();
 
   async function requestAccount() {
@@ -114,8 +118,14 @@ function ElectionPage({ proveKeyString, programString }: HomeProps) {
           inputs
         );
         const receipt = await transaction.wait();
-        setTxUrl(`https://ropsten.etherscan.io/tx/${receipt.transactionHash}`);
+
+        // setTxUrl(`https://ropsten.etherscan.io/tx/${receipt.transactionHash}`);
         fetchVote();
+
+        setVoted(true);
+        //set it in the local storage for this election
+        localStorage.setItem(`election-${id}`, "true");
+
       } catch (e) {
         console.log("Error", e);
         setTxUrl(null);

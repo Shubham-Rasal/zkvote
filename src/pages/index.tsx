@@ -14,6 +14,7 @@ type Election = {
   votes: number;
   winner: string;
   date: string;
+  status: Status
 };
 
 type Status = "Upcoming" | "Ongoing" | "Completed";
@@ -21,29 +22,29 @@ type Status = "Upcoming" | "Ongoing" | "Completed";
 const elections: Election[] = [
   {
     id: "1",
-    name: "2024 Presidential Election",
-    votes: 150000000,
-    winner: "John Doe",
-    date: "2024-11-03",
+    name: "2024 Student Council Election",
+    votes: 1500,
+    winner: "Rahul Sharma",
+    date: "2024-03-15",
+    status : "Upcoming"
   },
   {
     id: "2",
-    name: "2024 Senate Race",
-    votes: 80000000,
-    winner: "Jane Smith",
-    date: "2024-11-03",
+    name: "2024 Cultural Secretary Election",
+    votes: 800,
+    winner: "Priya Singh",
+    date: "2024-03-15",
+    status : "Ongoing"
   },
   {
     id: "3",
-    name: "2023 Gubernatorial Election",
-    votes: 5000000,
-    winner: "Bob Johnson",
-    date: "2023-11-07",
+    name: "2023 Sports Captain Election",
+    votes: 500,
+    winner: "Amit Patel",
+    date: "2023-12-01",
+    status : "Completed"
   },
 ];
-
-const status = "Ongoing" as Status;
-
 
 
 function Home() {
@@ -130,14 +131,14 @@ function Home() {
 
                         <p
                           className={`mt-2 text-sm font-medium ${
-                            status === "Upcoming"
+                            election.status === "Upcoming"
                               ? "text-blue-500"
-                              : status === "Ongoing"
+                              : election.status === "Ongoing"
                               ? "text-green-500"
                               : "text-red-500"
                           }`}
                         >
-                          {status}
+                          {election.status}
                         </p>
                       </div>
                     </div>
